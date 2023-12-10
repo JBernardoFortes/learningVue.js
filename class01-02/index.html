@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Class 01</title>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="../image/vue.ico" type="image/x-icon" />
+  </head>
+  <body>
+    <div class="containerB">
+      <h3><span>Testing Basic of Vue.js</span></h3>
+      <h4><span>Class 01 - 02</span></h4>
+
+      <hr />
+
+      <div id="app">
+        <section>
+          <transition name="fade" mode="out-in">
+          <div class="imgC" :key='current' v-if="show">
+            <img class='image':src='book.imageSrc[current]'>
+          </div>
+        </transition>
+          <transition>
+            <div class="info" v-if="show">
+              <transition name="fade" mode="out-in">
+                <div :key="current">
+                  <span>{{book.titles[current]}}</span>
+                  <span>{{book.author[current]}}</span>
+                </div>
+              </transition>
+              <transition name="fade" mode="out-in">
+                <div :key="count">
+                  <span>{{count}}</span>
+                </div>
+              </transition>
+            </div>
+          </transition>
+        </section>
+
+        <div class="buttons">
+          <button @click="changeTitle()">Change Title</button>
+
+          <button @click="count++">Increment</button>
+          <button @click="count--">Decrement</button>
+          <button @click="count = 0">Reset</button>
+          <button @click="showInfo()" id="show">Show Info</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Class 01</title>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="../image/vue.ico" type="image/x-icon" />
+  </head>
+  <body>
+    <div class="containerB">
+      <h3><span>Testing Basic of Vue.js</span></h3>
+      <h4><span>Class 01</span></h4>
+
+      <hr />
+
+      <div id="app">
+        <section>
+          <transition>
+            <div v-if="show">
+             
+                <div :key="current">
+                  <span>{{book.titles[current]}}</span>
+                  <span>{{book.author}}</span>
+                  <span>{{count}}</span>
+                </div>
+              
+            </div>
+          </transition>
+        </section>
+
+        <div class="buttons">
+          <button @click="changeTitle()">Change Title</button>
+
+          <button @click="count++">Increment</button>
+          <button @click="count--">Decrement</button>
+          <button @click="count = 0">Reset</button>
+          <button @click="showInfo()" id="show">Show Info</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
