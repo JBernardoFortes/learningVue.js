@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sorting Algorithms</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="../image/vue.ico" type="image/x-icon">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <header class="title">
+      <h2><span>Sorting Algorithms</span></h2>
+      <hr class="line" />
+    </header>
+    <div id="app">
+      <ul class="lista">
+        <li v-for="num in numbers" class="item" >
+          <transition name="fade" mode="out-in">
+            <h1 :key='num'><span>{{num}}</span></h1>
+          </transition>
+        </li>
+      </ul>
+
+      <div class="buttons">
+        <button class="but" @Click="fillArray(8)">Shuffle Array</button>
+        <button class="but" @Click="bubbleSort">Bubble Sort</button>
+        <button class="but" @Click='insertionSort'> Insertion Sort</button>
+        <button class="but" @Click='selectionSort'> Selection Sort</button>
+        <button class="but" @Click='mergeSort(this.numbers)'> Merge Sort</button>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
