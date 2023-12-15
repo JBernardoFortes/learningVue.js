@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&family=Reggae+One&family=Roboto+Slab:wght@100;400;700&family=Roboto:wght@300;400;700&display=swap");
+
+* {
+  --blueLight: #8ecae6ff;
+  --blueGreen: #219ebcff;
+  --blueDarker: rgb(0, 33, 49);
+  --blueDark: #023047ff;
+  --yellow: #ffb703ff;
+  --orange: #fb8500ff;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+body {
+  background-color: var(--blueDark);
+  color: var(--blueLight);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  letter-spacing: 1.5px;
+  font-family: "reggae One";
+}
+body .title {
+  cursor: pointer;
+  margin: 10px;
+  position: relative;
+}
+.title span::after {
+  content: "";
+  width: 100%;
+  position: absolute;
+  height: 2px;
+  left: 0;
+  bottom: -5px;
+  transform: scale(0);
+  transition: transform 0.2s ease;
+  background-color: var(--yellow);
+}
+body .title:hover span::after {
+  transform: scale(1);
+}
+body hr {
+  width: 60%;
+  height: 2px;
+  background-color: var(--blueGreen);
+  position: relative;
+  margin-top: 30px;
+}
+body hr::after {
+  content: "";
+  height: 100%;
+  background-color: var(--yellow);
+  width: 20%;
+  position: absolute;
+  left: 0;
+  animation: wave 2s infinite;
+}
+.defaultContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30vw;
+  user-select: none;
+
+  margin: 2vw;
+  height: 13vh;
+  font-weight: bolder;
+  letter-spacing: 0.4px;
+  color: var(--blueDarker);
+  cursor: pointer;
+  background-color: var(--blueGreen);
+  border: solid 2px var(--blueLight);
+  border-radius: 5px;
+  transition: all 0.4s ease;
+}
+.defaultContainer span {
+  margin: 0vw 1vw;
+}
+.defaultContainer:hover {
+  background-color: var(--blueLight);
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+.fade-enter-to,
+.fade-leave-from {
+  opacity: 1;
+}
+.fade-enter-active {
+  transition: opacity 0.4s ease;
+}
+.upDown-enter-from,
+.upDown-leave-to {
+  transform: translateY(-10px);
+}
+.upDown-enter-to,
+.upDown-leave-from {
+  transform: translateY(0);
+}
+.upDown-enter-active {
+  transition: transform 0.1s ease;
+}
+
+@keyframes wave {
+  0% {
+    left: -20%;
+  }
+
+  100% {
+    left: 100%;
+  }
+}

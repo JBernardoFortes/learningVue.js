@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&family=Reggae+One&family=Roboto+Slab:wght@100;400;700&family=Roboto:wght@300;400;700&display=swap");
+
+* {
+  --blueLight: #8ecae6ff;
+  --blueGreen: #219ebcff;
+  --blueDarker: rgb(0, 33, 49);
+  --blueDark: #023047ff;
+  --yellow: #ffb703ff;
+  --orange: #fb8500ff;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+body {
+  background-color: var(--blueDark);
+  color: var(--blueLight);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  letter-spacing: 1.5px;
+  font-family: "reggae One";
+}
+body .title {
+  cursor: pointer;
+  margin: 10px 0 0 0;
+  position: relative;
+}
+.title span::after {
+  content: "";
+  width: 100%;
+  position: absolute;
+  height: 2px;
+  left: 0;
+  bottom: -5px;
+  transform: scale(0);
+  transition: transform 0.2s ease;
+  background-color: var(--yellow);
+}
+body .title:hover span::after {
+  transform: scale(1);
+}
+body hr {
+  width: 60%;
+  height: 2px;
+  background-color: var(--blueGreen);
+  position: relative;
+  margin-top: 30px;
+}
+body hr::after {
+  content: "";
+  height: 100%;
+  background-color: var(--yellow);
+  width: 20%;
+  position: absolute;
+  left: 0;
+  animation: wave 2s infinite;
+}
+
+.lista .item {
+  display: flex;
+  width: 30vw;
+  height: 23vh;
+  margin: 2vh;
+  justify-content: space-around;
+  border: solid 2px var(--blueLight);
+  border-radius: 3px;
+  padding: 10px 0;
+  position: relative;
+  transition: all 0.6s ease;
+}
+.item img {
+  border-radius: 3px;
+  pointer-events: none;
+}
+.item h4,
+h3 {
+  margin: auto 20px;
+}
+.item h4 {
+  font-size: 11px;
+}
+.item h3 {
+  font-size: 14px;
+}
+.button {
+  width: 5vw;
+  height: 3vh;
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-family: "Reggae One";
+  border: solid 2px var(--blueLight);
+  background-color: var(--blueDark);
+  color: var(--blueLight);
+  transition: all 0.3s ease;
+}
+.button:hover {
+  background-color: var(--blueLight);
+  color: var(--blueDark);
+}
+.fav {
+  background-color:var(--yellow);
+  color:var(--blueDark);
+  border-color: var(--yellow);
+}
+@keyframes wave {
+  0% {
+    left: -20%;
+  }
+
+  100% {
+    left: 100%;
+  }
+}

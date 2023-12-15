@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Class 02</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="../image/vue.ico" type="image/x-icon" />
+  </head>
+  <body>
+    <h3 class="title"><span> Class 02 - Beginning </span></h2>
+    <h4 class="title"><span> Testing Events </span></h3>
+    <hr class="line" />
+    <div id="app">
+
+        <ul class="lista">
+          <li v-for='book in books' class="item" :class='{fav: book.isFav}'>
+            <img :src='book.img'/>
+            <h3>
+              {{book.title}}
+            </h3>
+            <h4>
+              {{book.author}}
+            </h4>
+            <button class="button" @click='favorite(book)'>Favorite</button>
+          </li>
+        </ul>
+
+    </div>
+    <hr class="line" />
+    <script src="app.js"></script>
+  </body>
+</html>
