@@ -109,12 +109,33 @@ const app = Vue.createApp({
 
       return Arr;
     },
-    walk(steps) {
-      if (steps == 0) {
+    partition(array, start, end) {
+      //Achar o lugar do pivot
+      let pivot = array[end];
+      let i = start - 1;
+      for (let j = start; j <= end - 1; j++) {
+        if (array[j] <= pivot) {
+          // Elemento menor = troca
+          i += 1;
+          let aux = array[i];
+          array[i] = array[j];
+          array[j] = aux;
+        }
+      }
+      i += 1;
+      aux = array[i];
+      array[i] = array[end];
+      array[end] = aux;
+
+      return i; // Indice do pivot
+    },
+    quickSort(array, start, end) {
+      if (end <= start) {
         return;
       }
-      console.log(steps);
-      this.walk(steps - 1);
+      let pivot = this.partition(array, start, end); // Achar o indice do pivot
+      this.quickSort(array, start, pivot - 1); //Como o pivot ta no lugar certo, não considerar ele
+      this.quickSort(array, pivot + 1, end);
     },
   },
 });
