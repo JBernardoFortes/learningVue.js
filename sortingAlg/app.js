@@ -2,17 +2,95 @@ const app = Vue.createApp({
   data() {
     return {
       numbers: [0, 0, 0, 0, 0, 0, 0, 0],
+      isSorted: false,
+      entrada: null,
+      saida: "",
     };
   },
   methods: {
+    // isSorted(array) {
+    //   for (let i = 0; i < array.length - 1; i++) {
+    //     if (array[i] > array[i + 1]) {
+    //       return false;
+    //     }
+    //   }
+    //   return true;
+    // },
+
+    intSearch() {
+      let x = 0;
+      if (this.entrada >= 100) {
+        x = Math.floor(this.entrada / 10);
+      } else {
+        x = this.entrada;
+      }
+
+      for (let i = 0; i < this.numbers.length; i++) {
+        if (x == this.numbers[i]) {
+          this.saida = `Número encontrado na posição ${i + 1}`;
+          return;
+        }
+      }
+      this.saida = `Número não encontrado`;
+    },
+    binSearch(array) {
+      if(this.isSorted != true) { 
+        this.saida = `Ordene o array antes de fazer uma busca binária`
+        return;
+      }
+      let x;
+      if (this.entrada >= 100) {
+        x = Math.floor(this.entrada / 10);
+      } else {
+        x = this.entrada;
+      }
+      // Jeito interativo
+
+      let low = 0;
+      let high = array.length;
+      let mid2;
+      while (low <= high) {
+        mid2 = Math.floor((low + high) / 2);
+        if (array[mid2] == x) {
+          this.saida = `Número encontrado na posição ${mid2 + 1}`;
+          return;
+        }
+        if (x > array[mid2]) {
+          low = mid2 + 1;
+        } else if (x < array[mid2]) {
+          high = mid2 - 1;
+        }
+      }
+      this.saida = `Número não encontrado`;
+    },
+    callMergeSort() {
+      if (this.isSorted == true) {
+        this.alert();
+        return;
+      }
+      this.mergeSort(this.numbers);
+      this.isSorted = true;
+    },
+    callQuickSort() {
+      if (this.isSorted == true) {
+        this.alert();
+        return;
+      }
+      this.quickSort(this.numbers, 0, this.numbers.length - 1);
+      this.isSorted = true;
+    },
+    alert() {
+      window.alert("A lista já está ordenada");
+    },
     fillArray(x) {
       for (let i = 0; i < x; i++) {
         this.numbers[i] = Math.floor(Math.random() * 100);
       }
+      this.isSorted = false;
     },
     bubbleSort() {
-      if (this.numbers.length == 0) {
-        window.alert("Não há números para ordenar");
+      if (this.isSorted == true) {
+        this.alert();
         return;
       }
       for (let i = 0; i < this.numbers.length; i++) {
@@ -24,10 +102,12 @@ const app = Vue.createApp({
           }
         }
       }
+      this.isSorted = true;
     },
     insertionSort() {
-      if (this.numbers.length == 0) {
-        window.alert("Não há números para ordenar");
+      if (this.isSorted == true) {
+        this.alert();
+
         return;
       }
       for (let i = 1; i < this.numbers.length; i++) {
@@ -40,10 +120,12 @@ const app = Vue.createApp({
         } // Caso o j chegue no último elemento, ele vai parar no -1
         this.numbers[j + 1] = temp;
       }
+      this.isSorted = true;
     },
     selectionSort() {
-      if (this.numbers.length == 0) {
-        window.alert("Não há números para ordenar");
+      if (this.isSorted == true) {
+        this.alert();
+
         return;
       }
 
@@ -58,6 +140,7 @@ const app = Vue.createApp({
         this.numbers[i] = this.numbers[min];
         this.numbers[min] = aux;
       }
+      this.isSorted = true;
     },
     mergeSort(Arr) {
       if (Arr.length < 2) {
@@ -136,6 +219,7 @@ const app = Vue.createApp({
       let pivot = this.partition(array, start, end); // Achar o indice do pivot
       this.quickSort(array, start, pivot - 1); //Como o pivot ta no lugar certo, não considerar ele
       this.quickSort(array, pivot + 1, end);
+      this.isSorted = true;
     },
   },
 });

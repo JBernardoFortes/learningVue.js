@@ -5,31 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sorting Algorithms</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="shortcut icon" href="../image/vue.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../image/vue.ico" type="image/x-icon" />
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   </head>
   <body>
-    <header class="title">
-      <h2><span>Sorting Algorithms</span></h2>
-      <hr class="line" />
-    </header>
+    
     <div id="app">
-      <ul class="lista">
-        <li v-for="num in numbers" class="item" >
-          <transition name="fade" mode="out-in">
-            <h1 :key='num'><span>{{num}}</span></h1>
-          </transition>
-        </li>
-      </ul>
+      <section id='sorting'>
+        <header class="title">
+          <h2><span>Sorting Algorithms</span></h2>
+        </header>
+        <ul class="lista">
+          <li v-for="num in numbers" class="item">
+            <transition name="fade" mode="out-in">
+              <h1 :key="num"><span>{{num}}</span></h1>
+            </transition>
+          </li>
+        </ul>
 
-      <div class="buttons">
-        <button class="but" @Click="fillArray(8)">Shuffle Array</button>
-        <button class="but" @Click="bubbleSort">Bubble Sort</button>
-        <button class="but" @Click='insertionSort'> Insertion Sort</button>
-        <button class="but" @Click='selectionSort'> Selection Sort</button>
-        <button class="but" @Click='mergeSort(this.numbers)'> Merge Sort</button>
-        <button class="but" @Click='quickSort(this.numbers,0,this.numbers.length -1 )'> Quick Sort</button>
-      </div>
+        <div class="buttons">
+          <button class="but" @Click="fillArray(8)">Shuffle Array</button>
+          <button class="but" @Click="bubbleSort">Bubble Sort</button>
+          <button class="but" @Click="insertionSort">Insertion Sort</button>
+          <button class="but" @Click="selectionSort">Selection Sort</button>
+          <button class="but" @Click=" callMergeSort">Merge Sort</button>
+          <button class="but" @Click="callQuickSort">Quick Sort</button>
+        </div>
+      </section>
+      <div class='vl'></div>
+      <section id='searching'>
+        <section class="title2">
+          <h2><span>Searching Algorithms</span></h2>
+        </section>
+        <div class="containerE">
+          <input
+            type="number"
+            class="entrada"
+            oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+            v-model="entrada"
+            maxlength="2"
+            placeholder="00"
+            id="entrada"
+          />
+          <!-- IMPORTANTE O ONINPUT -->
+          <button class="but" @Click="intSearch()">Iterative Search</button>
+          <button class="but" @Click="binSearch(this.numbers)">
+            Binary Search
+          </button>
+        </div>
+        <div class="saida">
+          <transition name="fade" mode="out-in">
+            <span :key="this.saida">{{this.saida}}</span>
+          </transition>
+        </div>
+      </section>
     </div>
     <script src="app.js"></script>
   </body>
