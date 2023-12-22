@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>5 star rating</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="../image/vue.ico" type="image/x-icon" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <header class="title" v-if="show">
+        <h2><span> 5 Star Rating </span></h2>
+        <hr class="line" />
+      </header>
+
+      <section class="listaC">
+        <div class="book">
+          <img :src="book.img" />
+          <h4>
+            <span class="titleB"> {{book.title}} </span>
+          </h4>
+        </div>
+
+        <ul class="lista">
+          <li
+            v-for="star in stars"
+            class="item"
+            @mouseEnter="activeColor(star)"
+            @mouseLeave="desactiveColor(star)"
+            @Click="activeStar(star)"
+          >
+            <img src="../image/star-svgrepo-com.png" alt="star" />
+          </li>
+        </ul>
+      </section>
+      <button class="button" @Click="printMode()">Hide</button>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
