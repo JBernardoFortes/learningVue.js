@@ -5,8 +5,8 @@ const app = Vue.createApp({
       stars: [0, 1, 2, 3, 4],
       active: -1,
       book: {
-        title: "Nascidos da Bruma: O Império Final",
-        img: "../image/book/mistborn-TFE.jpg",
+        title: "Nascidos da Bruma: O Herói das Eras",
+        img: "../image/book/mistborn-THOA2.jpg",
       },
       show: true,
     };
