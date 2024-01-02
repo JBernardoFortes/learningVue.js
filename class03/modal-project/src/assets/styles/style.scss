@@ -1,0 +1,146 @@
+.fade-enter-from,
+.fade-leave-to {
+  transform: scale(0.5);
+  opacity: 0;
+}
+.fade-enter-to,
+.fade-leave-from {
+  transform: scale(1);
+  opacity: 1;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.2s ease;
+}
+body {
+  background-color: #ddd;
+
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  transition: background-color 0.2s ease;
+}
+.modalContainer {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+
+  .modalBox {
+    padding: 2em;
+    height: 50vh;
+    position: absolute;
+    top: 1em;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: 15% repeat(3, 25%);
+    justify-content: space-evenly;
+    width: 55%;
+    gap: 8px;
+    font-size: 0.9rem;
+    margin: 10vh auto;
+    border-radius: 0.7em;
+    border: none;
+    box-shadow: black 0 0 1.2em;
+
+    h1,
+    h3 {
+      grid-column: 1/3;
+      pointer-events: none;
+    }
+  }
+}
+a {
+  color: aliceblue;
+  text-decoration: none;
+  border: 1px solid aliceblue;
+  grid-row: 3 / 4;
+  padding: 10px;
+  text-align: center;
+  width: 20%;
+  margin: auto;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+a:hover {
+  background-color: aliceblue;
+  color: rgb(65, 65, 65);
+}
+button {
+  padding: 0.6em 1em;
+  background-color: rgb(44, 44, 44);
+  color: aliceblue;
+  border: 1px solid white;
+  border-radius: 8px;
+  font-style: italic;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 15px;
+}
+// button:hover {
+//   background-color: rgb(77, 77, 77);
+//   color: rgb(250, 191, 191);
+// }
+.inputModal {
+  background-color: rgb(65, 65, 65);
+  color: aliceblue;
+  border: 1px solid aliceblue;
+  text-align: center;
+  height: 2em;
+  margin: auto 10px;
+  border-radius: 7px;
+  font-size: 1em;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+}
+.inputModal:focus {
+  outline: none;
+  background-color: rgb(92, 92, 92);
+}
+.inputModal:hover {
+  background-color: rgb(92, 92, 92);
+}
+.inputModal::placeholder {
+  color: rgb(155, 155, 155);
+}
+#loginName,
+#loginPass {
+  grid-column: 2/ 3;
+}
+.loginTitle {
+  grid-column: 1/3;
+  pointer-events: none;
+}
+.loginName {
+  margin: auto;
+  grid-column: 1/2;
+  grid-row: 2/3;
+  pointer-events: none;
+}
+.loginPass {
+  margin: auto;
+  grid-column: 1/2;
+  grid-row: 3/4;
+  pointer-events: none;
+}
+.modalBox button {
+  background-color: rgb(92, 92, 92);
+  color: aliceblue;
+  height: 50%;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  width: 50%;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  margin: auto;
+}
+.modalBox button:hover {
+  background-color: aliceblue;
+  color: rgb(65, 65, 65);
+  border: 1px solid aliceblue;
+}
+.modalActive {
+  background-color: #a8a8a8;
+}
