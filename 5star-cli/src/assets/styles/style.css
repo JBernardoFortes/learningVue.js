@@ -73,6 +73,7 @@ body {
   cursor: default;
   margin-bottom: 1em;
   letter-spacing: 2px;
+  font-size: 1.3em;
 }
 #dataOutput h4 span {
   position: relative;

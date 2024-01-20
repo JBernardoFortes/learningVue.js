@@ -13,6 +13,7 @@ html {
 body {
   background-color: var(--black);
   color: var(--white);
+  
   background-repeat: no-repeat;
 }
 .header {
@@ -69,6 +70,7 @@ body {
     cursor: default;
     margin-bottom: 1em;
     letter-spacing: 2px;
+    font-size: 1.3em;
     // text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
     //   1px 1px 0 #000;
     // text-shadow: 1px 0px 1px var(--black);

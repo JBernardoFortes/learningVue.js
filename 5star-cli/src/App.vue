@@ -6,7 +6,7 @@
   </header> -->
   <main class="main">
     <transition name="fade" mode="out-in">
-      <div id="dataOutput" v-if="this.show" :key="this.show">
+      <div id="dataOutput" v-if="this.show" :key="this.imageUrl">
         <img
           :src="this.imageUrl"
           alt="image"
