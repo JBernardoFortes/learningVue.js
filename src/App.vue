@@ -1,14 +1,28 @@
 <template>
-  <header class="header">
+  <!-- <header class="header">
     <h2>
       <span> 5 Star Rating</span>
     </h2>
-  </header>
+  </header> -->
   <main class="main">
+    <transition name="fade" mode="out-in">
+      <div id="dataOutput" v-if="this.show" :key="this.show">
+        <img
+          :src="this.imageUrl"
+          alt="image"
+          id="dataImage"
+          @load="changeBG()"
+        />
+        <h4>
+          <span id="dataText"> {{ this.textOuput }}</span>
+        </h4>
+      </div>
+    </transition>
+
     <Stars></Stars>
   </main>
   <footer class="footer">
-    <Inputs></Inputs>
+    <Inputs @send-data="(data) => handleData(data)"></Inputs>
   </footer>
 </template>
 
@@ -16,11 +30,54 @@
 // import HelloWorld from './components/HelloWorld.vue'
 import Stars from "./components/Stars.vue";
 import Inputs from "./components/Inputs.vue";
+import ColorThief from "../node_modules/colorthief/dist/color-thief.mjs";
 export default {
   name: "App",
+  data() {
+    return {
+      show: false,
+      imageUrl: "#  ",
+      textOuput: null,
+    };
+  },
   components: {
     Stars,
     Inputs,
+  },
+  methods: {
+    handleData(data) {
+      //Passou em arrow function no event handler pq nao tava recebendo o parametro direto
+      let colors = [];
+      console.log(data.image);
+      console.log(colors);
+      //Pegar as cores e a URL da imagem
+      try {
+        this.imageUrl = URL.createObjectURL(data.image);
+      } catch (e) {
+        window.alert("Insira uma imagem válida");
+        return;
+      }
+
+      this.textOuput = data.title;
+      this.show = true;
+      // console.log(this.imageUrl);
+    },
+    changeBG() {
+      const thief = new ColorThief();
+      const body = [...document.getElementsByTagName("body")][0];
+      let palette = thief.getPalette(document.getElementById("dataImage"));
+      let colors = [];
+
+      palette.forEach((color, i ) => {
+        
+        if (color[0] > 110 && i < 5) {
+          return;
+        }
+        colors.push(color.join(","));
+      });
+      body.style.backgroundImage = `linear-gradient(to bottom, rgb(${colors[0]}),rgb(${colors[1]}))`;
+      // body.style.backgroundColor = `rgb(${colors[0]})`
+    },
   },
 };
 </script>
