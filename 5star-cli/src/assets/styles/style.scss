@@ -1,0 +1,227 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+* {
+  --black: rgb(53, 53, 53);
+  --white: whitesmoke;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto";
+}
+html {
+  margin: 0;
+  height: 100%;
+}
+body {
+  background-color: var(--black);
+  color: var(--white);
+  background-repeat: no-repeat;
+}
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  color: var(--white);
+  letter-spacing: 1.5px;
+  margin: 0;
+  padding: 0;
+
+  h2 {
+    cursor: default;
+    position: relative;
+
+    span {
+      position: relative;
+    }
+  }
+}
+.header h2 span::after {
+  content: "";
+  background-color: var(--white);
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 2px;
+  transition: all 0.2s ease;
+  transform: scale(0);
+}
+.header h2:hover span::after {
+  transform: scale(1);
+}
+
+#dataOutput {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10vh;
+  gap: 0px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  #dataImage {
+    width: 20%;
+    filter: drop-shadow(0px 0px 14px black);
+    box-shadow: rgb(39, 39, 39) 0px 0px 13px;
+    border-radius: 5px;
+    margin-bottom: 1em;
+  }
+  h4 {
+    color: var(--white);
+    cursor: default;
+    margin-bottom: 1em;
+    letter-spacing: 2px;
+    text-shadow: 0px 0px 3px var(--black);
+    span {
+      position: relative;
+    }
+  }
+}
+#dataOutput h4 span::after {
+  content: "";
+  width: 100%;
+  position: absolute;
+  background-color: var(--white);
+  height: 1px;
+  left: 0;
+  bottom: -2px;
+  transition: all 0.3s ease;
+  transform: scale(0);
+}
+#dataOutput h4:hover span::after {
+  transform: scale(1);
+}
+#dataOutput h4 {
+  margin-top: 20px;
+  letter-spacing: 6px;
+}
+#hideEye
+{
+  width: 3vw;
+  cursor: pointer;
+  filter: invert(0);
+  position: absolute;
+  right: 2px;
+  transition: filter .3s ease;
+  bottom: 2px;
+}
+#hideEye:hover { 
+  filter: invert(1);
+}
+.stars {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2em;
+  height: 10vh;
+  gap: 1em;
+  margin: auto;
+  position: relative;
+  padding: 0;
+
+  .star {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0px;
+    text-decoration: none;
+    list-style: none;
+    padding: 0px;
+    cursor: pointer;
+    width: 4%;
+    border-radius: 50%;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    position: relative;
+
+    img {
+      width: 100%;
+      max-width: 50%;
+      padding: 0;
+      margin: 0;
+    }
+  }
+}
+
+.filter {
+  filter: grayscale(1);
+  transition: all 0.2s linear;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 4em;
+  gap: 1em;
+
+  #imageInput {
+    display: none;
+  }
+  .inputLabel {
+    color: var(--white);
+    padding: 1em;
+    background-color: var(--black);
+    border: 1.5px solid var(--white);
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    letter-spacing: 4px;
+    font-weight: bold;
+  }
+  #textInput {
+    background-color: var(--black);
+    color: var(--white);
+    padding: 1.2em;
+    font-weight: bold;
+    letter-spacing: 2px;
+    border-radius: 7px;
+    border: 1.5px solid var(--white);
+    transition: all 0.2s ease;
+    width: 20vw;
+    text-align: center;
+  }
+  .button {
+    background-color: var(--black);
+    color: var(--white);
+    padding: 1.2em;
+    border: 1.5px solid var(--white);
+    border-radius: 7px;
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+    letter-spacing: 4px;
+    font-weight: bold;
+  }
+}
+
+.inputLabel:hover {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+#textInput:hover,
+#textInput:focus,
+.button:hover {
+  outline: none;
+  background-color: var(--white);
+  color: var(--black);
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+.fade-enter-to,
+.fade-leave-from {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.3s ease;
+}
