@@ -69,7 +69,9 @@ body {
     cursor: default;
     margin-bottom: 1em;
     letter-spacing: 2px;
-    text-shadow: 0px 0px 3px var(--black);
+    // text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    //   1px 1px 0 #000;
+    // text-shadow: 1px 0px 1px var(--black);
     span {
       position: relative;
     }
@@ -81,6 +83,7 @@ body {
   position: absolute;
   background-color: var(--white);
   height: 1px;
+  // border: .1px solid black;
   left: 0;
   bottom: -2px;
   transition: all 0.3s ease;
@@ -93,17 +96,16 @@ body {
   margin-top: 20px;
   letter-spacing: 6px;
 }
-#hideEye
-{
+#hideEye {
   width: 3vw;
   cursor: pointer;
   filter: invert(0);
   position: absolute;
   right: 2px;
-  transition: filter .3s ease;
+  transition: filter 0.3s ease;
   bottom: 2px;
 }
-#hideEye:hover { 
+#hideEye:hover {
   filter: invert(1);
 }
 .stars {
@@ -133,6 +135,7 @@ body {
     -moz-transition: all 0.2s ease;
     -o-transition: all 0.2s ease;
     transition: all 0.2s ease;
+
     position: relative;
 
     img {
@@ -143,10 +146,17 @@ body {
     }
   }
 }
-
+// .dropShadow {
+//   filter: drop-shadow(0px 0px 2px var(--black));
+//   transition: all .3s linear;
+// }
 .filter {
-  filter: grayscale(1);
-  transition: all 0.2s linear;
+  filter: grayscale(1) drop-shadow(0px 0px 2px var(--black));
+  transition: all 0.2s ease;
+}
+.filterActive {
+  filter: grayscale(0) drop-shadow(0px 0px 2px var(--black));
+  transition: all 0.2s ease;
 }
 
 .footer {

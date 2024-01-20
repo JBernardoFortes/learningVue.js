@@ -76,16 +76,23 @@ export default {
       const thief = new ColorThief();
       const body = [...document.getElementsByTagName("body")][0];
       const outputText = document.getElementById("dataText");
-
       let palette = thief.getPalette(document.getElementById("dataImage"));
       let colors = [];
+      let colorsA = [];
 
       palette.forEach((color, i) => {
         if (color[0] > 110 && i < 5) {
           return;
         }
+       
         colors.push(color.join(","));
+        colorsA.push(color);
       });
+      if (colorsA[0][0] > 110 && colorsA[1][0] > 110) {
+        outputText.style.color = "var(--black)";
+      } else {
+        outputText.style.color = "var(--white)";
+      }
       body.style.backgroundImage = `linear-gradient(to bottom, rgb(${colors[0]}),rgb(${colors[1]}))`;
       // body.style.backgroundColor = `rgb(${colors[0]})`
     },

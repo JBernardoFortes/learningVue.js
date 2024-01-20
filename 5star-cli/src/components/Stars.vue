@@ -9,7 +9,7 @@
     >
       <img
         src="../assets/images/star.png"
-        class="starImg filter"
+        class="starImg filter dropShadow"
         alt="star"
         :id="star"
       />
@@ -33,6 +33,7 @@ export default {
       for (let i = 0; i <= index; i++) {
         let star = [...stars[i].getElementsByTagName("img")][0];
         star.classList.remove("filter");
+        star.classList.add('filterActive')
       }
     },
     desactiveColor(index) {
@@ -44,6 +45,7 @@ export default {
         }
         let star = [...stars[i].getElementsByTagName("img")][0];
         star.classList.add("filter");
+        star.classList.remove('filterActive')
       }
     },
     activeStar(index) {
@@ -56,6 +58,7 @@ export default {
       for (let i = 0; i <= index; i++) {
         let starImg = starC[i].getElementsByTagName("img")[0];
         starImg.classList.remove("filter");
+        starImg.classList.add('filterActive');
       }
       let starImgs = [];
       starC.forEach((star) => {
@@ -65,9 +68,11 @@ export default {
         if (index <= this.active) {
           // Ativado
           star.classList.remove("filter");
+          star.classList.add('filterActive')
         } else {
           // Desativado
           star.classList.add("filter");
+          star.classList.remove('filterActive')
         }
       });
     },
