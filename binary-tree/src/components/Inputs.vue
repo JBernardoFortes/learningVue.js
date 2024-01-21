@@ -7,6 +7,7 @@
         id="inputNumber"
         class="input"
         placeholder="Type a number"
+        @keyup.enter="submitElement()"
       />
       <button class="button" id="submit" @click="submitElement()">
         Submit
@@ -15,6 +16,7 @@
       <button class="button" @click="getMax()">Maximum Value</button>
       <button class="button" @click="getHeight()">Tree Height</button>
       <button class="button" @click="getSize()">Tree Size</button>
+      <button class="button" @click="getLength()">In. Length</button>
     </div>
     <div class="tranverse">
       <button class="button" @click="inOrderT()">In-Order Tranverse</button>
@@ -23,6 +25,7 @@
       <button class="button" @click="levelOrderT()">
         Level-Order Tranverse
       </button>
+      <button class="button" @click="isBalanced()">IsBalanced</button>
     </div>
   </div>
 </template>
@@ -39,6 +42,8 @@ export default {
     "preOrderData",
     "postOrderData",
     "levelOrderData",
+    "isBalancedData",
+    "lengthData",
   ],
   data() {
     return {
@@ -187,6 +192,33 @@ export default {
         this.data.push(data.data);
       });
       this.$emit("levelOrderData", this.data);
+    },
+    isBalanced() {
+      try {
+        if (this.binaryTree.root == null) {
+          window.alert("Árvore vazia");
+          return;
+        }
+      } catch {
+        window.alert("Árvore vazia");
+        return;
+      }
+      let isBalanced = this.binaryTree.isBalanced();
+      this.$emit("isBalancedData", isBalanced > 0);
+    },
+    getLength() {
+      try {
+        if (this.binaryTree.root == null) {
+          window.alert("Árvore vazia");
+          return;
+        }
+      } catch {
+        window.alert("Árvore vazia");
+        return;
+      }
+      this.data = [];
+      this.data.push(this.binaryTree.internalLength());
+      this.$emit("lengthData", this.data[0]);
     },
   },
 };

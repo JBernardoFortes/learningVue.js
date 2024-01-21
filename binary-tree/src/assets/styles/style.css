@@ -118,7 +118,7 @@ input::-webkit-inner-spin-button {
 }
 
 .button:active {
-  color: crimson;
+  box-shadow: inset 0px 0px 4px black;
   transition: background-color 0.1s ease;
 }
 
@@ -126,19 +126,51 @@ input::-webkit-inner-spin-button {
   width: 100%;
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   margin-top: 2em;
   color: var(--white);
   font-weight: bold;
+  animation: surge 0.3s ease;
 }
 .outputContainer .outputList {
   display: flex;
-  flex-direction: row;
-  width: 100%;
+  width: 80%;
+  margin: 0;
+  padding: 0;
   justify-content: center;
   align-items: center;
   gap: 0.5em;
 }
 .outputContainer .outputItem {
   list-style: none;
+  letter-spacing: 1.5px;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.fade-enter-to,
+.fade-leave-from {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-enter-actvive,
+.fade-leave-active {
+  transition: all 0.2s ease;
+}
+
+@keyframes surge {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(1);
+    opacity: 1;
+  }
 }/*# sourceMappingURL=style.css.map */

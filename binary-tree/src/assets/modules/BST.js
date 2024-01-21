@@ -138,6 +138,7 @@ export default class BinaryTree {
   }
   isBalanced() {
     return this.isBalancedNode(this.root);
+    // VALOR POSITIVO == BALANCEADA
   }
   isBalancedNode(node) {
     if (node == null) return 0;
