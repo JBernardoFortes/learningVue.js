@@ -14,6 +14,7 @@ export default class BinaryTree {
     if (node.data < data) {
       if (node.right == null) {
         node.right = new Node(data);
+        node.children[1] = node.right;
       } else {
         this.insertNode(node.right, data);
       }
@@ -21,6 +22,7 @@ export default class BinaryTree {
       // Node.data < data
       if (node.left == null) {
         node.left = new Node(data);
+        node.children[0] = node.left;
       } else {
         this.insertNode(node.left, data);
       }
@@ -72,6 +74,21 @@ export default class BinaryTree {
         queue.push(temp.right);
       }
     }
+  }
+  contains(data){
+    let current = this.root;
+
+    while(current != null){
+      if(current.data == data){
+        return true;
+      }
+      if(current.data < data){
+        current = current.right;
+      }else{
+        current = current.left;
+      }
+    }
+    return false
   }
   min() {
     return this.minNode(this.root);
