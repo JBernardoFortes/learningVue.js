@@ -1,10 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:ital,wght@0,300..700;1,300..700&display=swap");
 * {
   --black: rgb(53, 53, 53);
   --white: whitesmoke;
   margin: 0;
   padding: 0;
-  font-family: "Roboto";
+  font-family: "Spline Sans Mono";
 }
 
 html {
@@ -215,6 +216,10 @@ body {
   outline: none;
   background-color: var(--white);
   color: var(--black);
+}
+
+#dataText {
+  font-family: "Spline Sans Mono";
 }
 
 .fade-enter-from,
