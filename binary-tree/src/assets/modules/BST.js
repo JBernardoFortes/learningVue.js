@@ -2,6 +2,7 @@ import Node from "./Node.js";
 export default class BinaryTree {
   constructor(data) {
     this.root = null; // nó da árvore
+    this.type = null;
   }
   insert(data) {
     if (this.root == null) {
@@ -11,6 +12,12 @@ export default class BinaryTree {
     this.insertNode(this.root, data);
   }
   insertNode(node, data) {
+    if(typeof data != 'number'){
+      node.isNum = false;
+    }else{
+      node.isNum = true;
+    }
+
     if (node.data < data) {
       if (node.right == null) {
         node.right = new Node(data);

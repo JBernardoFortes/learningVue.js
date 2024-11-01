@@ -1,6 +1,21 @@
 <template>
   <header class="header">
-    <h1><span id="border"> Arvore Binaria de Busca</span></h1>
+    <h1>
+      <span id="border" :key="this.binaryTree.type">
+        Arvore Binaria de Busca</span
+      >
+      <transition name="fade" mode="out-in">
+
+      <span
+        v-if="this.binaryTree.type"
+        class="surge"
+        :key="this.binaryTree.type"
+      >
+        {{ this.binaryTree.type == "number" ? " - Números" : " - Nomes" }}
+      </span>
+    </transition>
+
+    </h1>
   </header>
   <main class="mainContainer">
     <Inputs
@@ -17,7 +32,7 @@
       @treeFeedback="(data) => handleTreeFeedback(data)"
     ></Inputs>
   </main>
-  <div class='outputContainerWrapper'>
+  <div class="outputContainerWrapper">
     <div class="outputContainer" v-if="this.show">
       <transition mode="out-in" name="fade">
         <h2 :key="type">

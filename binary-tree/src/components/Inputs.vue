@@ -2,11 +2,11 @@
   <div class="inputs">
     <div class="data">
       <input
-        type="number"
+        type="text"
         name="numberInput"
         id="inputNumber"
         class="input"
-        placeholder="Digite um numero"
+        placeholder="Digite um valor"
         @keyup.enter="submitElement()"
       />
       <button class="button" id="submit" @click="submitElement()">
@@ -22,8 +22,11 @@
       <button class="button" @click="inOrderT()">Percurso Em-Ordem</button>
       <button class="button" @click="preOrderT()">Percurso Pre-Ordem</button>
       <button class="button" @click="postOrderT()">Percurso Pos-Ordem</button>
-      <button class="button" @click="levelOrderT()">Percurso por Nivel (LevelOrder)</button>
+      <button class="button" @click="levelOrderT()">
+        Percurso por Nivel (LevelOrder)
+      </button>
       <button class="button" @click="isBalanced()">Arvore Balanceada?</button>
+      <button class="button" id="resetButton" @click="resetTree()">Reiniciar Árvore</button>
     </div>
   </div>
 </template>
@@ -55,17 +58,40 @@ export default {
       if (this.binaryTree == null) {
         this.binaryTree = new BinaryTree();
       }
-      const inputElement = Number(document.getElementById("inputNumber").value);
+      var inputElement = document.getElementById("inputNumber").value;
+
       if (
         inputElement == null ||
-        inputElement == undefined || 
-        document.getElementById("inputNumber").value.length == 0)
-      {
-        window.alert("Insira um valor válido");
+        inputElement == undefined ||
+        inputElement.length == 0 ||
+        !inputElement.match(/^[a-z0-9 çãõéí]+$/i)
+      ) {
+        window.alert("Insira um valor válido.");
         return;
       }
+
+      if (!isNaN(inputElement)) {
+        inputElement = Number(inputElement);
+      }
+
+      if (this.binaryTree.size() == 0) {
+        this.binaryTree.type = typeof inputElement;
+        // window.alert(
+        //   "Como o valor " + inputElement + " foi adicionado o tipo da árvore está definido como " + this.binaryTree.type +
+        //   ". Para aceitar tipos diferentes, será necessário reiniciar a árvore.");
+      }
+
       if (this.binaryTree.contains(inputElement)) {
-        window.alert("Valor já inserido");
+        window.alert("Valor já inserido na árvore. Insira um valor diferente.");
+        return;
+      }
+
+      if (this.binaryTree.type != typeof inputElement) {
+        window.alert(
+          "Valor inserido não é do tipo da árvore. Insira um valor do tipo " +
+            this.binaryTree.type +
+            " ou reinicie a árvore."
+        );
         return;
       }
 
@@ -113,7 +139,7 @@ export default {
         window.alert("Árvore vazia");
         return;
       }
-      let height = this.binaryTree.height();
+      let height = this.binaryTree.height() - 1;
       this.data = [];
       this.data.push(height);
       this.$emit("heightData", this.data[0]);
@@ -225,7 +251,20 @@ export default {
       this.data.push(this.binaryTree.internalLength());
       this.$emit("lengthData", this.data[0]);
     },
-    
+    resetTree() {
+      try {
+        if (this.binaryTree.root == null) {
+          window.alert("Árvore vazia");
+          return;
+        }
+      } catch {
+        window.alert("Árvore vazia");
+        return;
+      }
+      document.getElementById("inputNumber").value = null;
+      this.binaryTree = new BinaryTree();
+      this.$emit("treeFeedback", this.binaryTree);
+    },
   },
 };
 </script>
